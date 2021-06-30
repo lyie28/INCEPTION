@@ -3,7 +3,7 @@
 **What is Docker? And what makes it different from a VM?**
 
 Docker is a bit like a VM except that instead of installing a whole OS, it uses your computer's existing OS resources.
-You can compare Docker to a flat and a VM to a house. They are both isolated environments but a flat will share water/electricity resources whereas a house won't.
+You can compare Docker to a flat and a VM to a house. They are both isolated environments but a flat will use the building's water/electricity resources whereas a house won't.
 Docker is therefore much lighter than a VM.
 
 **Alpine vs Debian**
