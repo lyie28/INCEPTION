@@ -25,6 +25,8 @@ and to tell the php container to listen to port 9000 for requests from Nginx!
 I can then log in and modify the database from my WP container using the login details I set up. They communicate via port 3306.
 3) **Wordpress + Nginx:** I use a volume specified in the docker-compose.yml to mount the website files from the WP container into the Nginx container.
 
+![structure](https://user-images.githubusercontent.com/52970539/123990604-345c0880-d9ca-11eb-81b2-c1d9d423c1cd.jpg)
+
 **What does the PID have to do with anything???**
 
 The command used at the end of your Dockerfile will be given the PID 1, which is problematic when you use this commannd to launch a script in which you launch your service. 
