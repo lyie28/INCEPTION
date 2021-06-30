@@ -12,7 +12,7 @@ Alpine is a lot faster and lighter than Debian for this project. I highly recomm
 
 **What is Docker-compose?**
 
-Docker-compose is a realy handy tool for launching multi-container Docker stacks. 
+Docker-compose is a really handy tool for launching multi-container Docker stacks. 
 You can have several containers running different services within one network which can communciate with one another.
 It also has some handy commands which combine multiple Docker commands to save you time.
 
