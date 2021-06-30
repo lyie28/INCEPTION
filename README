@@ -42,4 +42,4 @@ wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass="$WP_USER_PASSW
 
 I can then login to website/wp-admin as either user using the login details I gave them:
 
-![alt text](https://github.com/lyie28/INCEPTION/blob/master/users.png?raw=true)
+![users](https://user-images.githubusercontent.com/52970539/123985382-b990ee80-d9c5-11eb-9e12-83eeb2dbcd0d.png)
