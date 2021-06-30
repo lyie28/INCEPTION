@@ -29,7 +29,7 @@ I can then log in and modify the database from my WP container using the login d
 
 **What does the PID have to do with anything???**
 
-The command used at the end of your Dockerfile will be given the PID 1, which is problematic when you use this commannd to launch a script in which you launch your service. 
+The command used at the end of your Dockerfile (with ENTRYPOINT/COMMAND) will be given the PID 1, which is problematic when you use this commannd to launch a script in which you launch your service.
 This is because the script cannot handle SIGTERM signals and pass them onto the service/command launched in your script, so Docker won't be able to exit gracefully. 
 To avoid this, if you need to use a script, you can end your script with exec [command] which will give this command the PID 1 instead of the script 
 and the sevrice will therefore be able to receive SIGTERM signals and stop if you stop your docker container. 
