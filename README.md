@@ -40,7 +40,7 @@ TO CHECK IF DOCKER EXITS GRACEFULLY:
 
 **WP set-up**
 
-I install my WP with an admin (details specified in my .env file and passed onto container via docker-compose file)
+I install my WP with an admin (details specified in my .env file and passed on to the container via docker-compose file)
 
 wp core install --url="$WP_SITE" --title="$WP_TITLE" --admin_user="$WP_ADMIN" --admin_password="$WP_ADMIN_PASSWORD" --admin_email="$WP_EMAIL" --skip-email
 
