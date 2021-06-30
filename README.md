@@ -19,9 +19,9 @@ It also has some handy commands which combine multiple Docker commands to save y
 **Communication between containters:**
 
 There are various points where the containers need to communicate with each other.
-1) **Nginx + PHP:** You need to modify the nginx.conf file and the to tell Nginx to pass php requests to the php container on port 9000 
-and to tell the php container to listen to port 9000 for requests from Nginx!
-2) **Mariadb + Wordpress:** I grant my WP container access to the database for WP I create in the mariadb container. 
+1) **Nginx + PHP:** I modified the nginx.conf file (Nginx contianer) to tell Nginx to pass php requests to the php container on port 9000 
+and the www.conf file (WP/PHP container) to tell the php container to listen to port 9000 for requests from Nginx!
+2) **Mariadb + Wordpress:** The script I launch in the entrypoint of my Mariadb container grants my WP container access to the Wordpress database. 
 I can then log in and modify the database from my WP container using the login details I set up. They communicate via port 3306.
 3) **Wordpress + Nginx:** I use a volume specified in the docker-compose.yml to mount the website files from the WP container into the Nginx container.
 
