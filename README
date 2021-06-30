@@ -1,4 +1,33 @@
+!! This project will not work on your machine unless adapted as it is was created to work in accordance with my file structures.
+
+What is Docker? And what makes it different from a VM?
+Docker is a bit like a VM except that instead of installing a whole OS, it uses your computer's existing OS resources.
+You can compare Docker to a flat and a VM to a house. They are both isolated environments but a flat will share water/electricity resources whereas a house won't.
+Docker is therefore much lighter than a VM.
+
+Alpine vs Debian
+Alpine is a lot faster and lighter than Debian for this project. I highly recommend it!
+
+What is Docker-compose?
+Docker-compose is a realy handy tool for launching multi-container Docker stacks. 
+You can have several containers running different services within one network which can communciate with one another.
+It also has some handy commands which combine multiple Docker commands to save you time.
+
+Communication between containters:
+There are various points where the containers need to communicate with each other.
+1) Nginx + PHP: You need to modify the nginx.conf file and the to tell Nginx to pass php requests to the php container on port 9000 
+and to tell the php container to listen to port 9000 for requests from Nginx!
+2) Mariadb and Wordpress: I grant my WP container access to the database for WP I create in the mariadb container. 
+I can then log in and modify the database from my WP container using the login details I set up. They communicate via port 3306.
+3) Wordpress and Nginx: I use a volume specified in the docker-compose.yml to mount the website files from the WP container into the Nginx container.
+
+What does the PID have to do with anything???
+The command used at the end of your Dockerfile will be given the PID 1, which is problematic when you use this commannd to launch a script in which you launch your service. 
+This is because the script cannot handle SIGTERM signals and pass them onto the service/command launched in your script, so Docker won't be able to exit gracefully. 
+To avoid this, if you need to use a script, you can end your script with exec [command] which will give this command the PID 1 instead of the script 
+and the sevrice will therefore be able to receive SIGTERM signals and stop if you stop your docker container. 
+
 TO CHECK IF DOCKER EXITS GRACEFULLY:
 1) docker stop [container name]
 2) docker inspect -f '{{.State.ExitCode}}' [container name]
-3) the exit code should be 0 :) If it is something like 127 then it didn't exit gracefuly
+3) the exit code should be 0... If it is something else, often something like 127, then it didn't exit gracefuly which means it couldn't close all the programs launched in the .sh !
