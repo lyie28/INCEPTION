@@ -31,3 +31,14 @@ TO CHECK IF DOCKER EXITS GRACEFULLY:
 1) docker stop [container name]
 2) docker inspect -f '{{.State.ExitCode}}' [container name]
 3) the exit code should be 0... If it is something else, often something like 127, then it didn't exit gracefuly which means it couldn't close all the programs launched in the .sh !
+
+WP set-up
+I install my WP with an admin (details specified in my .env file and passed onto container via docker-compose file)
+
+wp core install --url="$WP_SITE" --title="$WP_TITLE" --admin_user="$WP_ADMIN" --admin_password="$WP_ADMIN_PASSWORD" --admin_email="$WP_EMAIL" --skip-email
+
+And I then create a new non-admin user:
+wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass="$WP_USER_PASSWORD"
+
+I can then login to website/wp-admin as either user using the login details I gave them:
+
